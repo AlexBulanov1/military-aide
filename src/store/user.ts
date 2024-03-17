@@ -13,7 +13,7 @@ type UserStore = {
 	logout: () => void;
 	setIsCheckingAuthFinished: (isFinished: boolean) => void;
 	register: (user: User) => void;
-	login: (user: User) => void;
+	login: (user: Omit<User, 'role'>) => void;
 };
 
 export const useUserStore = create<UserStore>(set => ({
@@ -71,7 +71,7 @@ export const useUserStore = create<UserStore>(set => ({
 			set({ isLoading: false });
 		}
 	},
-	login: async (user: User) => {
+	login: async (user: Omit<User, 'role'>) => {
 		set({ isLoading: true });
 		try {
 			const candidate = await userService.getByEmailAndPassword(
