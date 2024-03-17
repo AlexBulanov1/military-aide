@@ -1,4 +1,4 @@
-import { Container } from 'lucide-react';
+import Container from '@/components/container/Container';
 import { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
