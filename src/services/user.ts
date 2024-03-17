@@ -4,19 +4,19 @@ import { User, UserWithId } from '@/types/user';
 class UserService {
 	private apiPrefix: string = '/users';
 
-	public async getByUsername(username: string): Promise<UserWithId> {
+	public async getByEmail(email: string): Promise<UserWithId> {
 		const { data: response } = await Axios.getInstance().get<UserWithId[]>(
-			`${this.apiPrefix}?username=${username}`,
+			`${this.apiPrefix}?email=${email}`,
 		);
 		return response[0];
 	}
 
-	public async getByUsernameAndPassword(
-		username: string,
+	public async getByEmailAndPassword(
+		email: string,
 		password: string,
 	): Promise<UserWithId> {
 		const { data: response } = await Axios.getInstance().get<UserWithId[]>(
-			`${this.apiPrefix}?username=${username}&password=${password}`,
+			`${this.apiPrefix}?email=${email}&password=${password}`,
 		);
 		return response[0];
 	}

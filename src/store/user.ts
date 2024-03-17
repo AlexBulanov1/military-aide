@@ -1,4 +1,5 @@
 import { userService } from '@/services/user';
+import { isAdminEmail } from '@/utils';
 import { create } from 'zustand';
 import type { User, UserWithId } from '../types/user';
 
@@ -35,12 +36,24 @@ export const useUserStore = create<UserStore>(set => ({
 	register: async (user: User) => {
 		set({ isLoading: true });
 		try {
-			const candidate = await userService.getByUsername(user.username);
+			const candidate = await userService.getByEmail(user.email);
 
 			if (candidate) {
 				set({
-					error: `User with username ${user.username} already exists`,
+					error: `User with email ${user.email} already exists`,
 				});
+				return;
+			}
+
+			// Just mock functionality to prevent registering non-admin users
+			if (!isAdminEmail(user.email, 'military')) {
+				set({
+					error: `User with email ${user.email} can't be registered`,
+					isAuthenticated: false,
+					user: null,
+				});
+				localStorage.removeItem('user');
+
 				return;
 			}
 
@@ -61,8 +74,8 @@ export const useUserStore = create<UserStore>(set => ({
 	login: async (user: User) => {
 		set({ isLoading: true });
 		try {
-			const candidate = await userService.getByUsernameAndPassword(
-				user.username,
+			const candidate = await userService.getByEmailAndPassword(
+				user.email,
 				user.password,
 			);
 
