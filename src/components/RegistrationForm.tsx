@@ -57,7 +57,7 @@ const RegistrationForm = () => {
 		register,
 		handleSubmit,
 		reset,
-		formState: { errors, isValid, isDirty },
+		formState: { errors, isValid },
 	} = useForm<RegistrationUser>({
 		mode: 'onChange',
 		resolver: yupResolver(registrationValidationSchema),
