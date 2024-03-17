@@ -16,7 +16,7 @@ class UserService {
 		password: string,
 	): Promise<UserWithId> {
 		const { data: response } = await Axios.getInstance().get<UserWithId[]>(
-			`${this.apiPrefix}/users?username=${username}&password=${password}`,
+			`${this.apiPrefix}?username=${username}&password=${password}`,
 		);
 		return response[0];
 	}
