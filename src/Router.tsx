@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import WithoutAuth from './hoc/WithoutAuth';
 import Layout from './layout/Layout';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
@@ -9,8 +10,22 @@ const Router = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<Layout />}>
-					<Route path='register' element={<Register />} />
-					<Route path='login' element={<Login />} />
+					<Route
+						path='register'
+						element={
+							<WithoutAuth>
+								<Register />
+							</WithoutAuth>
+						}
+					/>
+					<Route
+						path='login'
+						element={
+							<WithoutAuth>
+								<Login />
+							</WithoutAuth>
+						}
+					/>
 					<Route element={<NotFound />} path='*' />
 				</Route>
 			</Routes>
