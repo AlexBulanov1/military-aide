@@ -63,9 +63,6 @@ const RegistrationForm = () => {
 		resolver: yupResolver(registrationValidationSchema),
 	});
 
-	console.log('isValid', isValid);
-	console.log('isDirty', isDirty);
-
 	if (isLoading) {
 		return (
 			<div className='flex justify-center'>
