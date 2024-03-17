@@ -57,7 +57,7 @@ export const useUserStore = create<UserStore>(set => ({
 				return;
 			}
 
-			const newUser = await userService.register(user);
+			const newUser = await userService.register({ ...user, role: 'admin' });
 			set({ user: newUser, isAuthenticated: true, error: '' });
 			localStorage.setItem('user', JSON.stringify(newUser));
 		} catch (error) {

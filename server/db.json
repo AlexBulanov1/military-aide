@@ -1,10 +1,16 @@
 {
-	"users": [
-		{
-			"id": "abcd",
-			"username": "admin",
-			"password": "admin",
-			"role": "admin"
-		}
-	]
+  "users": [
+    {
+      "id": "abcd",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "e423",
+      "email": "admin@military.com",
+      "password": "asdasd",
+      "role": "admin"
+    }
+  ]
 }
