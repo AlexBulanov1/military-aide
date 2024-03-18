@@ -1,5 +1,6 @@
 import Loader from '@/components/Loader';
 import { useUserStore } from '@/store/user';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -14,16 +15,20 @@ const WithoutAuth = ({ children }: { children: React.ReactNode }) => {
 		})),
 	);
 
+	useEffect(() => {
+		if (!isLoading && isCheckingAuthFinished) {
+			if (isAuthenticated) {
+				navigate('/');
+			}
+		}
+	}, [isLoading, isCheckingAuthFinished, isAuthenticated, navigate]);
+
 	if (isLoading || !isCheckingAuthFinished) {
 		return (
 			<div className='flex justify-center'>
 				<Loader />
 			</div>
 		);
-	}
-
-	if (isAuthenticated && isCheckingAuthFinished) {
-		navigate('/');
 	}
 
 	return children;

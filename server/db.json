@@ -1,10 +1,44 @@
 {
-	"users": [
-		{
-			"id": "e423",
-			"email": "admin@military.com",
-			"password": "asdasd",
-			"role": "admin"
-		}
-	]
+  "users": [
+    {
+      "id": "e423",
+      "email": "admin@military.com",
+      "password": "asdasd",
+      "role": "admin"
+    }
+  ],
+  "soldiers": [
+    {
+      "id": "af92",
+      "name": "Vlad",
+      "surname": "Geyna",
+      "phone": "0968873837",
+      "birthDate": "2024-03-06",
+      "unit": "Some unit"
+    },
+    {
+      "id": "b2fd",
+      "name": "HEINA",
+      "surname": "VLADYSLAV",
+      "phone": "0937660691",
+      "birthDate": "2024-03-07",
+      "unit": "sdsadfsd"
+    },
+    {
+      "id": "f6a7",
+      "name": "HEINA",
+      "surname": "VLADYSLAVs",
+      "phone": "0937660693",
+      "birthDate": "2024-03-06",
+      "unit": "asdasdasd"
+    },
+    {
+      "id": "5af6",
+      "name": "HEINA",
+      "surname": "VLADYSLAV",
+      "phone": "0937661232",
+      "birthDate": "2024-03-01",
+      "unit": "sdfsdfsdf"
+    }
+  ]
 }

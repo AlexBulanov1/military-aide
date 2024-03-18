@@ -1,9 +1,10 @@
 import RegistrationForm from '@/components/RegistrationForm';
+import Title from '@/components/Title';
 
 const Register = () => {
 	return (
 		<div>
-			<h1 className='text-center text-4xl mb-5 font-bold'>Registration</h1>
+			<Title>Registration</Title>
 
 			<RegistrationForm />
 		</div>

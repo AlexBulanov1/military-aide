@@ -1,9 +1,10 @@
 import LoginForm from '@/components/LoginForm';
+import Title from '@/components/Title';
 
 const Login = () => {
 	return (
 		<div>
-			<h1 className='text-center text-4xl mb-5 font-bold'>Login</h1>
+			<Title>Login</Title>
 			<LoginForm />
 		</div>
 	);

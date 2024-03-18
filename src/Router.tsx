@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import WithoutAuth from './hoc/WithoutAuth';
 import Layout from './layout/Layout';
+import AddSoldier from './pages/AddSoldier';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
@@ -26,6 +27,7 @@ const Router = () => {
 							</WithoutAuth>
 						}
 					/>
+					<Route path='add-soldier' element={<AddSoldier />} />
 					<Route element={<NotFound />} path='*' />
 				</Route>
 			</Routes>

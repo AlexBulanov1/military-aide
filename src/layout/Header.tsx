@@ -35,26 +35,31 @@ const Header = () => {
 					{isLoading || !isCheckingAuthFinished ? (
 						''
 					) : isAuthenticated ? (
-						<div>
+						<div className='flex items-center gap-3'>
+							<Link to={'/add-soldier'}>
+								<Button type='button' variant={'secondary'}>
+									Add soldier
+								</Button>
+							</Link>
 							<Button
 								variant={'secondary'}
 								onClick={handleLogout}
 								type={'button'}>
-								<span>Log out</span>
+								Log out
 							</Button>
 						</div>
 					) : (
 						<div className='flex items-center gap-3'>
-							<Button type='button' variant={'secondary'}>
-								<Link to={'/register'}>
-									<span>Sign up</span>
-								</Link>
-							</Button>
-							<Button type='button' variant={'secondary'}>
-								<Link to={'/login'}>
-									<span>Sign in</span>
-								</Link>
-							</Button>
+							<Link to={'/register'}>
+								<Button type='button' variant={'secondary'}>
+									Sign up
+								</Button>
+							</Link>
+							<Link to={'/login'}>
+								<Button type='button' variant={'secondary'}>
+									Sign in
+								</Button>
+							</Link>
 						</div>
 					)}
 				</div>
