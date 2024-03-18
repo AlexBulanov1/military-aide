@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import WithoutAuth from './hoc/WithoutAuth';
 import Layout from './layout/Layout';
 import AddSoldier from './pages/AddSoldier';
+import Error from './pages/Error';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
@@ -11,6 +13,7 @@ const Router = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<Layout />}>
+					<Route element={<Home />} index />
 					<Route
 						path='register'
 						element={
@@ -28,6 +31,7 @@ const Router = () => {
 						}
 					/>
 					<Route path='add-soldier' element={<AddSoldier />} />
+					<Route path='error' element={<Error />} />
 					<Route element={<NotFound />} path='*' />
 				</Route>
 			</Routes>

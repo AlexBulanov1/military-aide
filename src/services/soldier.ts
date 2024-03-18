@@ -20,6 +20,13 @@ class SoldierService {
 		return response;
 	};
 
+	public getAll = async (): Promise<SoldierWithId[]> => {
+		const { data: response } = await Axios.getInstance().get<SoldierWithId[]>(
+			this.apiPrefix,
+		);
+		return response;
+	};
+
 	public getByPhone = async (phone: string): Promise<SoldierWithId> => {
 		const { data: response } = await Axios.getInstance().get<SoldierWithId[]>(
 			`${this.apiPrefix}?phone=${phone}`,
