@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import RequireAuth from './hoc/RequireAuth';
 import WithoutAuth from './hoc/WithoutAuth';
 import Layout from './layout/Layout';
 import AddSoldier from './pages/AddSoldier';
@@ -13,7 +14,14 @@ const Router = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<Layout />}>
-					<Route element={<Home />} index />
+					<Route
+						element={
+							<RequireAuth>
+								<Home />
+							</RequireAuth>
+						}
+						index
+					/>
 					<Route
 						path='register'
 						element={
