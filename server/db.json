@@ -63,7 +63,7 @@
 			"additionalInfo": "Some info"
 		},
 		{
-			"id": "e422",
+			"id": "b234",
 			"createdAt": "2024-03-06",
 			"soldierId": "af92",
 			"weight": 80,
@@ -73,17 +73,7 @@
 			"additionalInfo": "Some info"
 		},
 		{
-			"id": "e423",
-			"createdAt": "2024-03-06",
-			"soldierId": "af92",
-			"weight": 80,
-			"pressure": 120,
-			"pulse": 80,
-			"temperature": 36.6,
-			"additionalInfo": "Some info"
-		},
-		{
-			"id": "e433",
+			"id": "e445",
 			"createdAt": "2024-03-06",
 			"soldierId": "af92",
 			"weight": 80,

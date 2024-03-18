@@ -5,14 +5,23 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
+import { useDeleteSoldierHealthState } from '@/hooks/useDeleteSoldierHealthState';
 import { SoldierHealthState } from '@/types/soldier';
 import { formatDateAndTime } from '@/utils';
+import { Trash } from 'lucide-react';
+import Loader from './Loader';
+import { Button } from './ui/button';
 
 type HealthStateItemProps = {
 	healthState: SoldierHealthState;
 };
 
 const HealthStateItem = ({ healthState }: HealthStateItemProps) => {
+	const { mutate: deleteHealthState, isPending } = useDeleteSoldierHealthState(
+		healthState.id,
+		healthState.soldierId,
+	);
+
 	return (
 		<Card>
 			<CardHeader>
@@ -40,9 +49,23 @@ const HealthStateItem = ({ healthState }: HealthStateItemProps) => {
 				</div>
 			</CardContent>
 			<CardFooter>
-				<div className='flex flex-col'>
-					<p className='font-bold'>Additional info:</p>
-					<p>{healthState.additionalInfo}</p>
+				<div className='flex w-full gap-3 justify-between items-center'>
+					<div className='flex flex-col'>
+						<p className='font-bold'>Additional info:</p>
+						<p>{healthState.additionalInfo}</p>
+					</div>
+					<div>
+						<Button className='w-14' type={'button'}>
+							{isPending ? (
+								<Loader />
+							) : (
+								<Trash
+									onClick={() => deleteHealthState(healthState.id)}
+									className='w-full h-full'
+								/>
+							)}
+						</Button>
+					</div>
 				</div>
 			</CardFooter>
 		</Card>

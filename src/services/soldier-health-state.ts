@@ -12,6 +12,10 @@ class SoldierHealthStateService {
 		>(`${this.apiPrefix}?soldierId=${soldierId}`);
 		return response;
 	};
+
+	public delete = async (healthStateId: string): Promise<void> => {
+		await Axios.getInstance().delete(`${this.apiPrefix}/${healthStateId}`);
+	};
 }
 
 export const soldierHealthStateService = new SoldierHealthStateService();
