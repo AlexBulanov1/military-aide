@@ -1,86 +1,53 @@
 {
-	"users": [
-		{
-			"id": "e423",
-			"email": "admin@military.com",
-			"password": "asdasd",
-			"role": "admin"
-		}
-	],
-	"soldiers": [
-		{
-			"id": "af92",
-			"name": "Vlad",
-			"surname": "Geyna",
-			"phone": "0968873837",
-			"birthDate": "2024-03-06",
-			"unit": "Some unit"
-		},
-		{
-			"id": "b2fd",
-			"name": "HEINA",
-			"surname": "VLADYSLAV",
-			"phone": "0937660691",
-			"birthDate": "2024-03-07",
-			"unit": "sdsadfsd"
-		},
-		{
-			"id": "f6a7",
-			"name": "HEINA",
-			"surname": "VLADYSLAVs",
-			"phone": "0937660693",
-			"birthDate": "2024-03-06",
-			"unit": "asdasdasd"
-		},
-		{
-			"id": "5af6",
-			"name": "HEINA",
-			"surname": "VLADYSLAV",
-			"phone": "0937661232",
-			"birthDate": "2024-03-01",
-			"unit": "sdfsdfsdf"
-		}
-	],
-	"soldiers-health-states": [
-		{
-			"id": "e420",
-			"createdAt": "2024-03-06",
-			"soldierId": "af92",
-			"weight": 80,
-			"pressure": 120,
-			"pulse": 80,
-			"temperature": 36.6,
-			"additionalInfo": "Some info"
-		},
-		{
-			"id": "e421",
-			"createdAt": "2024-03-06",
-			"soldierId": "af92",
-			"weight": 80,
-			"pressure": 120,
-			"pulse": 80,
-			"temperature": 36.6,
-			"additionalInfo": "Some info"
-		},
-		{
-			"id": "b234",
-			"createdAt": "2024-03-06",
-			"soldierId": "af92",
-			"weight": 80,
-			"pressure": 120,
-			"pulse": 80,
-			"temperature": 36.6,
-			"additionalInfo": "Some info"
-		},
-		{
-			"id": "e445",
-			"createdAt": "2024-03-06",
-			"soldierId": "af92",
-			"weight": 80,
-			"pressure": 120,
-			"pulse": 80,
-			"temperature": 36.6,
-			"additionalInfo": "Some info"
-		}
-	]
+  "users": [
+    {
+      "id": "e423",
+      "email": "admin@military.com",
+      "password": "asdasd",
+      "role": "admin"
+    }
+  ],
+  "soldiers": [],
+  "soldiers-health-states": [
+    {
+      "id": "e420",
+      "createdAt": "2024-03-06",
+      "soldierId": null,
+      "weight": 80,
+      "pressure": 120,
+      "pulse": 80,
+      "temperature": 36.6,
+      "additionalInfo": "Some info"
+    },
+    {
+      "id": "e421",
+      "createdAt": "2024-03-06",
+      "soldierId": null,
+      "weight": 80,
+      "pressure": 120,
+      "pulse": 80,
+      "temperature": 36.6,
+      "additionalInfo": "Some info"
+    },
+    {
+      "id": "b234",
+      "createdAt": "2024-03-06",
+      "soldierId": null,
+      "weight": 80,
+      "pressure": 120,
+      "pulse": 80,
+      "temperature": 36.6,
+      "additionalInfo": "Some info"
+    },
+    {
+      "id": "e445",
+      "createdAt": "2024-03-06",
+      "soldierId": null,
+      "weight": 80,
+      "pressure": 120,
+      "pulse": 80,
+      "temperature": 36.6,
+      "additionalInfo": "Some info"
+    }
+  ]
 }

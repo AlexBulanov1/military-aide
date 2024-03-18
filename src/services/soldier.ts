@@ -1,5 +1,6 @@
 import { Axios } from '@/axios';
 import { Soldier, SoldierWithId } from '@/types/soldier';
+import { soldierHealthStateService } from './soldier-health-state';
 
 class SoldierService {
 	private apiPrefix: string = '/soldiers';
@@ -39,6 +40,11 @@ class SoldierService {
 			`${this.apiPrefix}/${id}`,
 		);
 		return response;
+	};
+
+	public delete = async (id: string): Promise<void> => {
+		await soldierHealthStateService.deleteBySoldierId(id);
+		await Axios.getInstance().delete(`${this.apiPrefix}/${id}`);
 	};
 }
 

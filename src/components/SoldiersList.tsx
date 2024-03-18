@@ -8,15 +8,21 @@ import {
 	TableRow,
 } from '@/components/ui/table';
 import { useCurrentDate } from '@/hooks/useCurrentDate';
+import { useDeleteSoldier } from '@/hooks/useDeleteSoldier';
 import { useGetSoldiers } from '@/hooks/useGetSoldiers';
+import { Trash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Loader from './Loader';
+import Title from './Title';
+import { Button } from './ui/button';
 
 const SoldiersList = () => {
 	const { currentDate } = useCurrentDate();
 	const navigate = useNavigate();
 
 	const { data, isLoading, isSuccess, isError, isFetching } = useGetSoldiers();
+
+	const { mutate: deleteSoldier, isPending } = useDeleteSoldier();
 
 	if (isLoading || isFetching) {
 		return (
@@ -27,10 +33,10 @@ const SoldiersList = () => {
 	}
 
 	if (isError || !isSuccess) {
-		navigate('/error');
+		return navigate('/error');
 	}
 
-	return (
+	return data.length > 0 ? (
 		<Table>
 			<TableCaption>Current soldiers list as of {currentDate}</TableCaption>
 			<TableHeader>
@@ -40,7 +46,8 @@ const SoldiersList = () => {
 					<TableHead>Surname</TableHead>
 					<TableHead>birthDate</TableHead>
 					<TableHead>phone</TableHead>
-					<TableHead className='text-right'>unit</TableHead>
+					<TableHead>unit</TableHead>
+					<TableHead className='text-right'></TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
@@ -54,11 +61,28 @@ const SoldiersList = () => {
 						<TableCell>{soldier.surname}</TableCell>
 						<TableCell>{soldier.birthDate}</TableCell>
 						<TableCell>{soldier.phone}</TableCell>
-						<TableCell className='text-right'>{soldier.unit}</TableCell>
+						<TableCell>{soldier.unit}</TableCell>
+						<TableCell className='text-right'>
+							<Button
+								type='button'
+								onClick={e => e.stopPropagation()}
+								className='w-14'>
+								{isPending ? (
+									<Loader />
+								) : (
+									<Trash
+										className='w-full h-full'
+										onClick={() => deleteSoldier(soldier.id)}
+									/>
+								)}
+							</Button>
+						</TableCell>
 					</TableRow>
 				))}
 			</TableBody>
 		</Table>
+	) : (
+		<Title className='flex justify-center'>No soldiers found</Title>
 	);
 };
 
