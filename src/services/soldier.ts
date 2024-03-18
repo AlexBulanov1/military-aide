@@ -33,6 +33,13 @@ class SoldierService {
 		);
 		return response[0];
 	};
+
+	public getById = async (id: string): Promise<SoldierWithId> => {
+		const { data: response } = await Axios.getInstance().get<SoldierWithId>(
+			`${this.apiPrefix}/${id}`,
+		);
+		return response;
+	};
 }
 
 export const soldierService = new SoldierService();

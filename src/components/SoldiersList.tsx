@@ -47,7 +47,7 @@ const SoldiersList = () => {
 				{data?.map(soldier => (
 					<TableRow
 						className='cursor-pointer'
-						onClick={() => navigate(`/soldier/${soldier.id}`)}
+						onClick={() => navigate(`/soldiers/${soldier.id}`)}
 						key={soldier.id}>
 						<TableCell className='font-medium'>{soldier.id}</TableCell>
 						<TableCell>{soldier.name}</TableCell>

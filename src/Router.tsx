@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
+import Soldier from './pages/Soldier';
 
 const Router = () => {
 	return (
@@ -21,6 +22,14 @@ const Router = () => {
 							</RequireAuth>
 						}
 						index
+					/>
+					<Route
+						path='/soldiers/:id'
+						element={
+							<RequireAuth>
+								<Soldier />
+							</RequireAuth>
+						}
 					/>
 					<Route
 						path='register'

@@ -1,15 +1,14 @@
 import { soldierService } from '@/services/soldier';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetSoldiers = () => {
+export const useGetSoldierById = (soldierId: string) => {
 	return useQuery({
-		queryKey: ['soldiers'],
+		queryKey: ['soldiers', soldierId],
 		queryFn: async () => {
-			const response = await soldierService.getAll();
+			const response = await soldierService.getById(soldierId);
 			return response;
 		},
 		staleTime: 1000 * 30,
 		retry: false,
-		refetchInterval: 60 * 1000,
 	});
 };

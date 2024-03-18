@@ -10,6 +10,8 @@ export type SoldierWithId = {
 export type Soldier = Omit<SoldierWithId, 'id'>;
 
 export type SoldierHealthState = {
+	id: string;
+	createdAt: string;
 	soldierId: string;
 	weight: number;
 	pressure: number;
