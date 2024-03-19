@@ -6,14 +6,14 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import { useDeleteSoldierHealthState } from '@/hooks/useDeleteSoldierHealthState';
-import { SoldierHealthState } from '@/types/soldier';
+import { SoldierHealthStateWithId } from '@/types/soldier';
 import { formatDateAndTime } from '@/utils';
 import { Trash } from 'lucide-react';
 import Loader from './Loader';
 import { Button } from './ui/button';
 
 type HealthStateItemProps = {
-	healthState: SoldierHealthState;
+	healthState: SoldierHealthStateWithId;
 };
 
 const HealthStateItem = ({ healthState }: HealthStateItemProps) => {

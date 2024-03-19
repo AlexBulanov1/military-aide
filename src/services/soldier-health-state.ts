@@ -1,5 +1,5 @@
 import { Axios } from '@/axios';
-import { SoldierHealthState } from '@/types/soldier';
+import { SoldierHealthState, SoldierHealthStateWithId } from '@/types/soldier';
 import { AxiosError } from 'axios';
 
 class SoldierHealthStateService {
@@ -7,10 +7,22 @@ class SoldierHealthStateService {
 
 	public getBySoldierId = async (
 		soldierId: string,
-	): Promise<SoldierHealthState[]> => {
+	): Promise<SoldierHealthStateWithId[]> => {
 		const { data: response } = await Axios.getInstance().get<
-			SoldierHealthState[]
+			SoldierHealthStateWithId[]
 		>(`${this.apiPrefix}?soldierId=${soldierId}`);
+		return response;
+	};
+
+	public create = async (
+		soldier: SoldierHealthState,
+	): Promise<SoldierHealthStateWithId> => {
+		const { data: response } =
+			await Axios.getInstance().post<SoldierHealthStateWithId>(
+				this.apiPrefix,
+				soldier,
+			);
+
 		return response;
 	};
 

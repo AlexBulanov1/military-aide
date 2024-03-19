@@ -9,7 +9,7 @@ export type SoldierWithId = {
 
 export type Soldier = Omit<SoldierWithId, 'id'>;
 
-export type SoldierHealthState = {
+export type SoldierHealthStateWithId = {
 	id: string;
 	createdAt: string;
 	soldierId: string;
@@ -19,3 +19,10 @@ export type SoldierHealthState = {
 	temperature: number;
 	additionalInfo: string;
 };
+
+export type SoldierHealthStateForm = Omit<
+	SoldierHealthStateWithId,
+	'id' | 'createdAt'
+>;
+
+export type SoldierHealthState = Omit<SoldierHealthStateWithId, 'id'>;

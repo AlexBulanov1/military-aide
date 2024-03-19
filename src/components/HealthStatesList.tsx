@@ -1,8 +1,8 @@
-import { SoldierHealthState } from '@/types/soldier';
+import { SoldierHealthStateWithId } from '@/types/soldier';
 import HealthStateItem from './HealthStateItem';
 
 type HealthStatesListProps = {
-	healthStates: SoldierHealthState[];
+	healthStates: SoldierHealthStateWithId[];
 };
 
 const HealthStatesList = ({ healthStates }: HealthStatesListProps) => {

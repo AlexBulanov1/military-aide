@@ -7,12 +7,21 @@
       "role": "admin"
     }
   ],
-  "soldiers": [],
+  "soldiers": [
+    {
+      "id": "9259",
+      "name": "HEINA",
+      "surname": "VLADYSLAV",
+      "phone": "0937660691",
+      "birthDate": "2024-03-13",
+      "unit": "Some unit"
+    }
+  ],
   "soldiers-health-states": [
     {
       "id": "e420",
       "createdAt": "2024-03-06",
-      "soldierId": null,
+      "soldierId": "9259",
       "weight": 80,
       "pressure": 120,
       "pulse": 80,
@@ -22,7 +31,7 @@
     {
       "id": "e421",
       "createdAt": "2024-03-06",
-      "soldierId": null,
+      "soldierId": "9259",
       "weight": 80,
       "pressure": 120,
       "pulse": 80,
@@ -32,7 +41,7 @@
     {
       "id": "b234",
       "createdAt": "2024-03-06",
-      "soldierId": null,
+      "soldierId": "9259",
       "weight": 80,
       "pressure": 120,
       "pulse": 80,
@@ -42,12 +51,32 @@
     {
       "id": "e445",
       "createdAt": "2024-03-06",
-      "soldierId": null,
+      "soldierId": "9259",
       "weight": 80,
       "pressure": 120,
       "pulse": 80,
       "temperature": 36.6,
       "additionalInfo": "Some info"
+    },
+    {
+      "id": "ed33",
+      "additionalInfo": "Very good state",
+      "temperature": 36.6,
+      "pulse": 100,
+      "pressure": 120,
+      "weight": 80,
+      "soldierId": "9259",
+      "createdAt": "2024-03-19T20:46:56.533Z"
+    },
+    {
+      "id": "dc57",
+      "additionalInfo": "sdfsdfsdfsd",
+      "temperature": 43,
+      "pulse": 3,
+      "pressure": 3,
+      "weight": 3,
+      "soldierId": "9259",
+      "createdAt": "2024-03-19T20:48:29.865Z"
     }
   ]
 }

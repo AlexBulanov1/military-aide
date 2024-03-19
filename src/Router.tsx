@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RequireAuth from './hoc/RequireAuth';
 import WithoutAuth from './hoc/WithoutAuth';
 import Layout from './layout/Layout';
+import AddHealthState from './pages/AddHealthState';
 import AddSoldier from './pages/AddSoldier';
 import Error from './pages/Error';
 import Home from './pages/Home';
@@ -28,6 +29,14 @@ const Router = () => {
 						element={
 							<RequireAuth>
 								<Soldier />
+							</RequireAuth>
+						}
+					/>
+					<Route
+						path='/add-health-state/:userId'
+						element={
+							<RequireAuth>
+								<AddHealthState />
 							</RequireAuth>
 						}
 					/>

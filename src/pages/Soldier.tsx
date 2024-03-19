@@ -1,16 +1,18 @@
 import HealthStatesList from '@/components/HealthStatesList';
 import Loader from '@/components/Loader';
 import Title from '@/components/Title';
+import { Button } from '@/components/ui/button';
 import { useGetSoldierById } from '@/hooks/useGetSoldierById';
 import { useGetSoldierHealthStates } from '@/hooks/useGetSoldierHealthStates';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const Soldier = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
 	if (!id) {
-		return navigate('/');
+		navigate('/');
+		return;
 	}
 
 	const {
@@ -48,21 +50,31 @@ const Soldier = () => {
 		isHealthStatesError ||
 		!areHealthStatesSuccess
 	) {
-		return navigate('/error');
+		navigate('/error');
+		return;
 	}
 
 	return (
 		<div>
 			{healthStates.length > 0 ? (
 				<div>
-					<Title className='!text-left text-5xl'>
-						{soldier.name} {soldier.surname}'s health states
-					</Title>
+					<div className='flex justify-between mb-5 gap-3 items-center'>
+						<Title className='!text-left !m-0 text-5xl'>
+							{soldier.name} {soldier.surname}'s health states
+						</Title>
+						<Link to={`/add-health-state/${soldier.id}`}>
+							<Button className='text-lg'>Add health state</Button>
+						</Link>
+					</div>
 					<HealthStatesList healthStates={healthStates} />
 				</div>
 			) : (
 				<Title className='text-5xl'>
-					No health states found for <br /> {soldier.name} {soldier.surname}
+					No health states found for <br /> {soldier.name} {soldier.surname}{' '}
+					<br />
+					<Link className='underline' to={`/add-health-state/${soldier.id}`}>
+						But you can add one
+					</Link>
 				</Title>
 			)}
 		</div>
