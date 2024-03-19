@@ -1,4 +1,4 @@
-import Loader from '@/components/Loader';
+import Loader from '@/components/ui/Loader';
 import { useUserStore } from '@/store/user';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';

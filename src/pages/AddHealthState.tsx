@@ -1,5 +1,5 @@
-import AddHealthStateForm from '@/components/AddHealthStateForm';
-import Title from '@/components/Title';
+import AddHealthStateForm from '@/components/forms/AddHealthStateForm';
+import Title from '@/components/ui/Title';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const AddHealthState = () => {

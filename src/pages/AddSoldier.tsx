@@ -1,5 +1,5 @@
-import AddSoldierForm from '@/components/AddSoldierForm';
-import Title from '@/components/Title';
+import AddSoldierForm from '@/components/forms/AddSoldierForm';
+import Title from '@/components/ui/Title';
 
 const AddSoldier = () => {
 	return (

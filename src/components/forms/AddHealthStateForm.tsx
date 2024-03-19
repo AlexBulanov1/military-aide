@@ -3,10 +3,11 @@ import { SoldierHealthStateForm } from '@/types/soldier';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
-import FormButton from './FormButton';
-import FormError from './FormError';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
+import Form from '../form/Form';
+import FormButton from '../form/FormButton';
+import FormItem from '../form/FormItem';
+import { Input } from '../ui/input';
+import { Textarea } from '../ui/textarea';
 
 const addHealthStateValidationSchema = Yup.object().shape({
 	soldierId: Yup.string().required('Soldier id is required'),
@@ -61,47 +62,58 @@ const AddHealthStateForm = ({ soldierId }: { soldierId: string }) => {
 
 	return (
 		<>
-			<form
-				className='max-w-[500px] m-auto flex flex-col gap-3'
-				onSubmit={handleSubmit(onSubmit)}
-				method='post'>
+			<Form onSubmit={handleSubmit(onSubmit)}>
 				<input type='hidden' {...register('soldierId')} value={soldierId} />
 
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Weight' type='text' {...register('weight')} />
-					<FormError message={errors.weight?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Pressure' type='text' {...register('pressure')} />
-					<FormError message={errors.pressure?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Pulse' type='text' {...register('pulse')} />
-					<FormError message={errors.pulse?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input
-						placeholder='Temperature'
-						type='text'
-						{...register('temperature')}
-					/>
-					<FormError message={errors.temperature?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Textarea
-						className='resize-none'
-						placeholder='Additional info'
-						{...register('additionalInfo')}
-					/>
-					<FormError message={errors.additionalInfo?.message} />
-				</div>
+				<FormItem
+					input={
+						<Input placeholder='Weight' type='text' {...register('weight')} />
+					}
+					errorMessage={errors.weight?.message}
+				/>
+				<FormItem
+					input={
+						<Input
+							placeholder='Pressure'
+							type='text'
+							{...register('pressure')}
+						/>
+					}
+					errorMessage={errors.pressure?.message}
+				/>
+				<FormItem
+					input={
+						<Input placeholder='Pulse' type='text' {...register('pulse')} />
+					}
+					errorMessage={errors.pulse?.message}
+				/>
+				<FormItem
+					input={
+						<Input
+							placeholder='Temperature'
+							type='text'
+							{...register('temperature')}
+						/>
+					}
+					errorMessage={errors.temperature?.message}
+				/>
+				<FormItem
+					input={
+						<Textarea
+							className='resize-none'
+							placeholder='Additional info'
+							{...register('additionalInfo')}
+						/>
+					}
+					errorMessage={errors.additionalInfo?.message}
+				/>
 				<FormButton
 					isDisabled={!isValid}
 					className='w-full'
 					isLoading={isPending}>
 					Add
 				</FormButton>
-			</form>
+			</Form>
 		</>
 	);
 };

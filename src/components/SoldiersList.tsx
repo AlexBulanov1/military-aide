@@ -12,8 +12,8 @@ import { useDeleteSoldier } from '@/hooks/useDeleteSoldier';
 import { useGetSoldiers } from '@/hooks/useGetSoldiers';
 import { Trash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Loader from './Loader';
-import Title from './Title';
+import Loader from './ui/Loader';
+import Title from './ui/Title';
 import { Button } from './ui/button';
 
 const SoldiersList = () => {

@@ -1,4 +1,4 @@
-import Title from '@/components/Title';
+import Title from '@/components/ui/Title';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {

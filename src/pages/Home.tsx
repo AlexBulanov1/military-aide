@@ -1,5 +1,5 @@
 import SoldiersList from '@/components/SoldiersList';
-import Title from '@/components/Title';
+import Title from '@/components/ui/Title';
 
 const Home = () => {
 	return (

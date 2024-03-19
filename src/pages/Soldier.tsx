@@ -1,6 +1,6 @@
 import HealthStatesList from '@/components/HealthStatesList';
-import Loader from '@/components/Loader';
-import Title from '@/components/Title';
+import Loader from '@/components/ui/Loader';
+import Title from '@/components/ui/Title';
 import { Button } from '@/components/ui/button';
 import { useGetSoldierById } from '@/hooks/useGetSoldierById';
 import { useGetSoldierHealthStates } from '@/hooks/useGetSoldierHealthStates';

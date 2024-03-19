@@ -4,9 +4,10 @@ import { PHONE_NUMBER_REGEXP } from '@/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
-import FormButton from './FormButton';
-import FormError from './FormError';
-import { Input } from './ui/input';
+import Form from '../form/Form';
+import FormButton from '../form/FormButton';
+import FormItem from '../form/FormItem';
+import { Input } from '../ui/input';
 
 const addSoldierValidationSchema = Yup.object().shape({
 	name: Yup.string()
@@ -46,45 +47,50 @@ const AddSoldierForm = () => {
 
 	return (
 		<>
-			<form
-				className='max-w-[500px] m-auto flex flex-col gap-3'
-				onSubmit={handleSubmit(onSubmit)}
-				method='post'>
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Name' type='text' {...register('name')} />
-					<FormError message={errors.name?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Surname' type='text' {...register('surname')} />
-					<FormError message={errors.surname?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input
-						placeholder='Phone number, example: 0961231213'
-						type='text'
-						{...register('phone')}
-					/>
-					<FormError message={errors.phone?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input
-						placeholder='Birth date'
-						type='date'
-						{...register('birthDate')}
-					/>
-					<FormError message={errors.birthDate?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Unit' type='text' {...register('unit')} />
-					<FormError message={errors.unit?.message} />
-				</div>
+			<Form onSubmit={handleSubmit(onSubmit)}>
+				<FormItem
+					input={<Input placeholder='Name' type='text' {...register('name')} />}
+					errorMessage={errors.name?.message}
+				/>
+				<FormItem
+					input={
+						<Input placeholder='Surname' type='text' {...register('surname')} />
+					}
+					errorMessage={errors.surname?.message}
+				/>
+				<FormItem
+					input={
+						<Input
+							placeholder='Phone number, example: 0961231213'
+							type='text'
+							{...register('phone')}
+						/>
+					}
+					errorMessage={errors.phone?.message}
+				/>
+				<FormItem
+					input={
+						<Input
+							id='birthDate'
+							placeholder='Birth date'
+							type='date'
+							{...register('birthDate')}
+						/>
+					}
+					errorMessage={errors.birthDate?.message}
+					label='Birth date'
+				/>
+				<FormItem
+					input={<Input placeholder='Unit' type='text' {...register('unit')} />}
+					errorMessage={errors.unit?.message}
+				/>
 				<FormButton
 					isDisabled={!isValid}
 					className='w-full'
 					isLoading={isPending}>
 					Add
 				</FormButton>
-			</form>
+			</Form>
 		</>
 	);
 };

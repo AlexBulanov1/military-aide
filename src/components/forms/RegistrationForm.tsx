@@ -6,10 +6,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useShallow } from 'zustand/react/shallow';
-import FormError from './FormError';
-import Loader from './Loader';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
+import Form from '../form/Form';
+import FormItem from '../form/FormItem';
+import Loader from '../ui/Loader';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
 
 const registrationValidationSchema = Yup.object().shape({
 	email: Yup.string().required('Email is required').email('Not valid email'),
@@ -86,35 +87,38 @@ const RegistrationForm = () => {
 					Error: <strong>{error}</strong>
 				</p>
 			)}
-			<form
-				className='max-w-[500px] m-auto flex flex-col gap-3'
-				onSubmit={handleSubmit(onSubmit)}
-				method='post'>
-				<div className='flex flex-col gap-1'>
-					<Input placeholder='Email' type='email' {...register('email')} />
-					<FormError message={errors.email?.message} />
-				</div>
-				<div className='flex flex-col gap-1'>
-					<Input
-						placeholder='Password'
-						type='password'
-						{...register('password')}
-					/>
-					<FormError message={errors.password?.message} />
-				</div>
+			<Form onSubmit={handleSubmit(onSubmit)}>
+				<FormItem
+					input={
+						<Input placeholder='Email' type='email' {...register('email')} />
+					}
+					errorMessage={errors.email?.message}
+				/>
+				<FormItem
+					input={
+						<Input
+							placeholder='Password'
+							type='password'
+							{...register('password')}
+						/>
+					}
+					errorMessage={errors.password?.message}
+				/>
 
-				<div className='flex flex-col gap-1'>
-					<Input
-						placeholder='Confirm password'
-						type='password'
-						{...register('confirmPassword')}
-					/>
-					<FormError message={errors.confirmPassword?.message} />
-				</div>
+				<FormItem
+					input={
+						<Input
+							placeholder='Confirm password'
+							type='password'
+							{...register('confirmPassword')}
+						/>
+					}
+					errorMessage={errors.confirmPassword?.message}
+				/>
 				<Button className='w-full' disabled={!isValid} type='submit'>
 					Register
 				</Button>
-			</form>
+			</Form>
 		</>
 	);
 };

@@ -9,7 +9,7 @@ import { useDeleteSoldierHealthState } from '@/hooks/useDeleteSoldierHealthState
 import { SoldierHealthStateWithId } from '@/types/soldier';
 import { formatDateAndTime } from '@/utils';
 import { Trash } from 'lucide-react';
-import Loader from './Loader';
+import Loader from './ui/Loader';
 import { Button } from './ui/button';
 
 type HealthStateItemProps = {
