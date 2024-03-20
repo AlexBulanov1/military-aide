@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 
 const Home = () => {
-	const [searchName, setSearchName] = useState('');
+	const [search, setSearch] = useState('');
 
 	return (
 		<div>
@@ -13,12 +13,12 @@ const Home = () => {
 				<Input
 					className='max-w-xs mb-6'
 					type='text'
-					placeholder='Search by name...'
-					onBlur={e => setSearchName(e.target.value)}
+					placeholder='Search...'
+					onBlur={e => setSearch(e.target.value)}
 				/>
 			</div>
 			<div>
-				<SoldiersList searchName={searchName} />
+				<SoldiersList search={search} />
 			</div>
 		</div>
 	);
