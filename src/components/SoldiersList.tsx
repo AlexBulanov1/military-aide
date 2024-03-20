@@ -10,11 +10,10 @@ import {
 import { useCurrentDate } from '@/hooks/useCurrentDate';
 import { useDeleteSoldier } from '@/hooks/useDeleteSoldier';
 import { useGetSoldiers } from '@/hooks/useGetSoldiers';
-import { Trash } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import DeleteSoldierButton from './DeleteSoldierButton';
 import Loader from './ui/Loader';
 import Title from './ui/Title';
-import { Button } from './ui/button';
 
 const SoldiersList = ({ search }: { search?: string }) => {
 	const { currentDate } = useCurrentDate();
@@ -65,19 +64,7 @@ const SoldiersList = ({ search }: { search?: string }) => {
 						<TableCell>{soldier.phone}</TableCell>
 						<TableCell>{soldier.unit}</TableCell>
 						<TableCell className='text-right'>
-							<Button
-								type='button'
-								onClick={e => e.stopPropagation()}
-								className='w-14'>
-								{isPending ? (
-									<Loader />
-								) : (
-									<Trash
-										className='w-full h-full'
-										onClick={() => deleteSoldier(soldier.id)}
-									/>
-								)}
-							</Button>
+							<DeleteSoldierButton soldierId={soldier.id} />
 						</TableCell>
 					</TableRow>
 				))}

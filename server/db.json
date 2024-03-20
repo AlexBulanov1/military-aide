@@ -11,6 +11,12 @@
       "email": "adminhehe@military.com",
       "password": "123123",
       "role": "admin"
+    },
+    {
+      "email": "admin123@military123.com",
+      "password": "123123",
+      "role": "admin",
+      "id": "hy4_3xb"
     }
   ],
   "soldiers": [
@@ -29,14 +35,6 @@
       "birthDate": "2024-03-14",
       "unit": "asdadasdasd",
       "id": "IRoMnEd"
-    },
-    {
-      "id": "c7f7",
-      "name": "Ivanenko",
-      "surname": "Ivan",
-      "phone": "0962837123",
-      "birthDate": "1999-03-12",
-      "unit": "sdsdfsdfsdf"
     }
   ],
   "soldiers-health-states": [
@@ -89,16 +87,6 @@
       "weight": 80,
       "soldierId": "9259",
       "createdAt": "2024-03-19T20:46:56.533Z"
-    },
-    {
-      "id": "dc57",
-      "additionalInfo": "sdfsdfsdfsd6",
-      "temperature": 43,
-      "pulse": 3,
-      "pressure": 3,
-      "weight": 3,
-      "soldierId": "9259",
-      "createdAt": "2024-03-19T20:48:29.865Z"
     },
     {
       "id": "edf3",
