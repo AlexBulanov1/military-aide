@@ -8,7 +8,6 @@ import {
 	TableRow,
 } from '@/components/ui/table';
 import { useCurrentDate } from '@/hooks/useCurrentDate';
-import { useDeleteSoldier } from '@/hooks/useDeleteSoldier';
 import { useGetSoldiers } from '@/hooks/useGetSoldiers';
 import { useNavigate } from 'react-router-dom';
 import DeleteSoldierButton from './DeleteSoldierButton';
@@ -21,8 +20,6 @@ const SoldiersList = ({ search }: { search?: string }) => {
 
 	const { data, isLoading, isSuccess, isError, isFetching } =
 		useGetSoldiers(search);
-
-	const { mutate: deleteSoldier, isPending } = useDeleteSoldier();
 
 	if (isLoading || isFetching) {
 		return (
