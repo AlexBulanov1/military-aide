@@ -41,8 +41,6 @@ const Soldier = () => {
 		isFetching: areHealthStatesFetching,
 	} = useGetSoldierHealthStates(id, limit, currentPage);
 
-	console.log('healthStates', healthStates);
-
 	if (
 		isSoldierLoading ||
 		isSoldierFetching ||
