@@ -7,11 +7,20 @@ class SoldierHealthStateService {
 
 	public getBySoldierId = async (
 		soldierId: string,
-	): Promise<SoldierHealthStateWithId[]> => {
+		limit: number,
+		page: number,
+	): Promise<{ data: SoldierHealthStateWithId[]; count: number }> => {
 		const { data: response } = await Axios.getInstance().get<
 			SoldierHealthStateWithId[]
+		>(`${this.apiPrefix}?soldierId=${soldierId}&_limit=${limit}&_page=${page}`);
+
+		// need this to implement pagination
+		// json-server doesn't return total count of records
+		const { data: responseAll } = await Axios.getInstance().get<
+			SoldierHealthStateWithId[]
 		>(`${this.apiPrefix}?soldierId=${soldierId}`);
-		return response;
+
+		return { data: response, count: responseAll.length };
 	};
 
 	public create = async (
