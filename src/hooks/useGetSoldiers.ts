@@ -1,11 +1,11 @@
 import { soldierService } from '@/services/soldier';
 import { useQuery } from '@tanstack/react-query';
 
-export const useGetSoldiers = () => {
+export const useGetSoldiers = (searchName?: string) => {
 	return useQuery({
-		queryKey: ['soldiers'],
+		queryKey: ['soldiers', searchName],
 		queryFn: async () => {
-			const response = await soldierService.getAll();
+			const response = await soldierService.getAll(searchName);
 			return response;
 		},
 		staleTime: 1000 * 30,

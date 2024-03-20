@@ -2,16 +2,6 @@ import { Axios } from '@/axios';
 import { SoldierHealthState, SoldierHealthStateWithId } from '@/types/soldier';
 import { AxiosError } from 'axios';
 
-// json-server api response type
-type GetBySoldierIdResponse = {
-	data: SoldierHealthStateWithId[];
-	items: number;
-	prev: number;
-	next: number;
-	last: number;
-	pages: number;
-};
-
 class SoldierHealthStateService {
 	private apiPrefix: string = '/soldiers-health-states';
 
@@ -20,12 +10,11 @@ class SoldierHealthStateService {
 		limit: number,
 		page: number,
 	): Promise<{ data: SoldierHealthStateWithId[]; count: number }> => {
-		const { data: response } =
-			await Axios.getInstance().get<GetBySoldierIdResponse>(
-				`${this.apiPrefix}?soldierId=${soldierId}&_page=${page}&_per_page=${limit}`,
-			);
+		const { data: response, headers } = await Axios.getInstance().get<
+			SoldierHealthStateWithId[]
+		>(`${this.apiPrefix}?soldierId=${soldierId}&_page=${page}&_limit=${limit}`);
 
-		return { data: response.data, count: response.items };
+		return { data: response, count: headers['x-total-count'] };
 	};
 
 	public create = async (

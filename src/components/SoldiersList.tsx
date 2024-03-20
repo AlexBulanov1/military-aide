@@ -16,11 +16,12 @@ import Loader from './ui/Loader';
 import Title from './ui/Title';
 import { Button } from './ui/button';
 
-const SoldiersList = () => {
+const SoldiersList = ({ searchName }: { searchName?: string }) => {
 	const { currentDate } = useCurrentDate();
 	const navigate = useNavigate();
 
-	const { data, isLoading, isSuccess, isError, isFetching } = useGetSoldiers();
+	const { data, isLoading, isSuccess, isError, isFetching } =
+		useGetSoldiers(searchName);
 
 	const { mutate: deleteSoldier, isPending } = useDeleteSoldier();
 
@@ -33,7 +34,8 @@ const SoldiersList = () => {
 	}
 
 	if (isError || !isSuccess) {
-		return navigate('/error');
+		navigate('/error');
+		return;
 	}
 
 	return data.length > 0 ? (

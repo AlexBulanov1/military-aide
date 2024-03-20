@@ -29,6 +29,14 @@
       "birthDate": "2024-03-14",
       "unit": "asdadasdasd",
       "id": "IRoMnEd"
+    },
+    {
+      "id": "c7f7",
+      "name": "Ivanenko",
+      "surname": "Ivan",
+      "phone": "0962837123",
+      "birthDate": "1999-03-12",
+      "unit": "sdsdfsdfsdf"
     }
   ],
   "soldiers-health-states": [

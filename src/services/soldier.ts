@@ -21,9 +21,9 @@ class SoldierService {
 		return response;
 	};
 
-	public getAll = async (): Promise<SoldierWithId[]> => {
+	public getAll = async (searchName?: string): Promise<SoldierWithId[]> => {
 		const { data: response } = await Axios.getInstance().get<SoldierWithId[]>(
-			this.apiPrefix,
+			`${this.apiPrefix}?q=${searchName ?? ''}`,
 		);
 		return response;
 	};
