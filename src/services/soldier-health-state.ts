@@ -2,6 +2,16 @@ import { Axios } from '@/axios';
 import { SoldierHealthState, SoldierHealthStateWithId } from '@/types/soldier';
 import { AxiosError } from 'axios';
 
+// json-server api response type
+type GetBySoldierIdResponse = {
+	data: SoldierHealthStateWithId[];
+	items: number;
+	prev: number;
+	next: number;
+	last: number;
+	pages: number;
+};
+
 class SoldierHealthStateService {
 	private apiPrefix: string = '/soldiers-health-states';
 
@@ -10,17 +20,12 @@ class SoldierHealthStateService {
 		limit: number,
 		page: number,
 	): Promise<{ data: SoldierHealthStateWithId[]; count: number }> => {
-		const { data: response } = await Axios.getInstance().get<
-			SoldierHealthStateWithId[]
-		>(`${this.apiPrefix}?soldierId=${soldierId}&_limit=${limit}&_page=${page}`);
+		const { data: response } =
+			await Axios.getInstance().get<GetBySoldierIdResponse>(
+				`${this.apiPrefix}?soldierId=${soldierId}&_page=${page}&_per_page=${limit}`,
+			);
 
-		// need this to implement pagination
-		// json-server doesn't return total count of records
-		const { data: responseAll } = await Axios.getInstance().get<
-			SoldierHealthStateWithId[]
-		>(`${this.apiPrefix}?soldierId=${soldierId}`);
-
-		return { data: response, count: responseAll.length };
+		return { data: response.data, count: response.items };
 	};
 
 	public create = async (
